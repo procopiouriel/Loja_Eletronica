@@ -84,15 +84,16 @@ namespace Loja_de_Eletronicos
         {
             try
             {
+                string id = txt_id.Text;
                 string nome = txt_nome.Text;
                 double valor = Convert.ToDouble(box_valor.Text);
                 string datafabricacao = box_df.Text;
                 int qtd = Convert.ToInt32(tx_qtd.Text);
-                Produtos p = new Produtos("1", nome, valor, datafabricacao, qtd);
+                Produtos p = new Produtos(id, nome, valor, datafabricacao, qtd);
                 Program.listaProdutos.Add(p);
 
                 Excel xls = new Excel();
-                xls.ExcelAdd("1", nome, valor, datafabricacao, qtd);
+                xls.ExcelAdd(id, nome, valor, datafabricacao, qtd);
 
 
 
@@ -112,6 +113,7 @@ namespace Loja_de_Eletronicos
         private void button2_Click_1(object sender, EventArgs e)
         {
             Form1 menu = new Form1();
+            this.Visible = false;
             menu.ShowDialog();
         }
     }

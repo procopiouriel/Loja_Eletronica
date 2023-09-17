@@ -74,7 +74,6 @@ namespace Loja_de_Eletronicos
             Cadastrar_Produto RV = new Cadastrar_Produto();
             this.Visible = false;
             RV.ShowDialog();
-            this.Visible = true;
         }
 
         private void button1_Click_2(object sender, EventArgs e)
@@ -82,16 +81,21 @@ namespace Loja_de_Eletronicos
             Form1 voltarMenu = new Form1();
             this.Visible = false;
             voltarMenu.ShowDialog();
-            this.Visible = true;
+            
         }
 
         private void button4_Click_2(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
+                DataGridViewRow linhaSelecionada = dataGridView1.SelectedRows[0];
                 int index = dataGridView1.SelectedRows[0].Index;
+
+
                 dataGridView1.Rows.RemoveAt(index);
+                string valorColuna1 = linhaSelecionada.Cells[0].Value.ToString();//ID DO PRODUTO REMOVIDO
                 Program.listaProdutos.RemoveAt(index);
+                Excel.ExcluirExcel(int.Parse(valorColuna1));
             }
         }
     }

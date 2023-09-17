@@ -53,7 +53,6 @@ namespace Loja_de_Eletronicos
             Form2_RealizarVenda tela = new Form2_RealizarVenda();
             this.Visible = false;
             tela.ShowDialog();
-            this.Visible = true;
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -61,7 +60,6 @@ namespace Loja_de_Eletronicos
             Form3_VisualizarEstoque RV = new Form3_VisualizarEstoque();
             this.Visible = false;
             RV.ShowDialog();
-            this.Visible = true;
         }
     }
 }

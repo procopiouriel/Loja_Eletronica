@@ -6,9 +6,9 @@ using Loja_de_Eletronicos;
 
 public class Excel
 {
-    Excel1.Application excelApp = new Excel1.Application();
-    Excel1.Workbook excelWorkbook;
-    Excel1.Worksheet excelWorksheet;
+    public static Excel1.Application excelApp = new Excel1.Application();
+    public static Excel1.Workbook excelWorkbook;
+    public static Excel1.Worksheet excelWorksheet;
 
 
 
@@ -98,6 +98,23 @@ public class Excel
         {
             MessageBox.Show("Ocorreu um erro inesperado: " + error.Message);
         }
+    }
+
+
+    public static void ExcluirExcel(int index)//SERVE PARA EXCLUIR ALGUMA LINHA DO EXCEL
+    {
+        excelWorkbook = excelApp.Workbooks.Open(@"C:\Users\proco\source\repos\Loja_Eletronicos\Loja_Eletronicos\Banco Dados\Estoque.xlsx");
+        excelWorksheet = excelWorkbook.Sheets[1];
+        int linha = index + 2;//SERVE PRA PEGAR A LINHA CERTINHA DO EXCEL
+        excelWorksheet.Cells[linha, 1] = null;
+        excelWorksheet.Cells[linha, 2] = null;
+        excelWorksheet.Cells[linha, 3] = null;
+        excelWorksheet.Cells[linha, 4] = null;
+        excelWorksheet.Cells[linha, 5] = null;
+
+        excelWorkbook.Save();
+        excelWorkbook.Close();
+        MessageBox.Show("Apagado com exito!");
     }
 }
        
